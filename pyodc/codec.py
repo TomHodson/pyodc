@@ -541,7 +541,7 @@ def select_codec(column_name: str, data: pd.Series, data_type, bitfields):
 
     elif data_type == DataType.STRING:
         if data.nunique() == 1 and not data.hasnans:
-            codec_class = ConstantString if len(data.iloc[0]) <= 8 else VariableLengthConstantString
+            codec_class = ConstantString if len(data.iloc[0]) <= 8 else Int8String
         elif data.nunique() <= 256:
             codec_class = Int8String
         else:
